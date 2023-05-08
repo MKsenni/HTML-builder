@@ -1,9 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+import { createReadStream } from 'fs';
+import { join } from 'path';
 
 const { stdout } = process;
 
-const readableStream = fs.createReadStream(path.join(__dirname, './text.txt'),
+const readableStream = createReadStream(join('01-read-file', './text.txt'),
 'utf-8');
 
 readableStream.on('data', data => {

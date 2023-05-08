@@ -1,12 +1,11 @@
-const fs = require('fs');
-const path = require('path');
+import { createWriteStream } from 'fs';
+import { join } from 'path';
 
 const { stdout, stdin  } = process;
 
-const writeFile = fs.createWriteStream(
-  path.join(__dirname,'./text.txt'),'utf-8'
+const writeFile = createWriteStream(
+  join('02-write-file','./text.txt'),'utf-8'
 );
-
 
 stdout.write('Please, write some text!\n');
 
@@ -18,4 +17,7 @@ stdin.on('data', data => {
   writeFile.write(data);
 });
 
-process.on('exit', () => stdout.write('Buy!'));
+process.on('SIGINT', () => {
+  stdout.write('Buy!');
+  process.exit();
+});
