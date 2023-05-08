@@ -3,9 +3,7 @@ import { join } from 'path';
 
 const { stdout, stdin  } = process;
 
-const writeFile = createWriteStream(
-  join('02-write-file','./text.txt'),'utf-8'
-);
+const writeFile = createWriteStream(join('02-write-file','./text.txt'),'utf-8');
 
 stdout.write('Please, write some text!\n');
 
