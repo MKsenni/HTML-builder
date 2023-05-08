@@ -3,7 +3,7 @@ import * as fs from 'node:fs';
 import { promises } from 'node:fs';
 import path from 'node:path';
 
-const copyFiles = () => {
+const copyDir = () => {
   fs.readdir('./04-copy-directory/files/', {withFileTypes: true}, (err, files) => {
     if (err) throw err.message;
 
@@ -33,7 +33,7 @@ try {
   const createDir = await mkdir(projectFolder, { recursive: true });
   console.log(`created ${createDir}`);
   removeFile();
-  copyFiles();
+  copyDir();
   console.log('Files was copied');
 } catch (err) {
   console.error(err.message);
