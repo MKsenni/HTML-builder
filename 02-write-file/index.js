@@ -10,6 +10,7 @@ stdout.write('Please, write some text!\n');
 stdin.on('data', data => {
   const str = data.toString().trim();
   if (str === 'exit') {
+    stdout.write('Buy!');
     process.exit();
   }
   writeFile.write(data);
@@ -17,5 +18,9 @@ stdin.on('data', data => {
 
 process.on('SIGINT', () => {
   stdout.write('Buy!');
+  process.exit();
+});
+
+process.on('exit', () => {
   process.exit();
 });
